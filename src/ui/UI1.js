@@ -24,9 +24,9 @@ class UI1 {
     this.optionsForm = document.createElement("form");
     this.optionsForm.innerHTML = `
       <label for"gridSize">Choose grid size: </label>
-      <input id="gridSize" name="gridSize" type="number" required min="2">
+      <input id="gridSize" name="gridSize" type="number" required>
       <label for"powerOfTwo">Choose winning condition: 2^</label>
-      <input id="powerOfTwo" name="powerOfTwo" type="number" required min="2" max="${Math.log2(Number.MAX_SAFE_INTEGER)}">
+      <input id="powerOfTwo" name="powerOfTwo" type="number" required>
       <button id="optionsSubmitButton" type="submit">Start</button>
     `;
 
@@ -185,6 +185,10 @@ class UI1 {
 
       const size = Math.trunc(Number(document.getElementById("gridSize").value));
       const pow = Math.trunc(Number(document.getElementById("powerOfTwo").value));
+
+      if (size < 2) return;
+      if (pow < 1) return;
+      if (pow > Math.log2(Number.MAX_SAFE_INTEGER)) return;
 
       this.options = {size, winningCondition: 2 ** pow};
 
