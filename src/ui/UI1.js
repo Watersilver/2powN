@@ -24,9 +24,9 @@ class UI1 {
     this.optionsForm = document.createElement("form");
     this.optionsForm.innerHTML = `
       <label for"gridSize">Choose grid size: </label>
-      <input id="gridSize" name="gridSize" type="number" required min="2" step="1">
+      <input id="gridSize" name="gridSize" type="number" required min="2">
       <label for"powerOfTwo">Choose winning condition: 2^</label>
-      <input id="powerOfTwo" name="powerOfTwo" type="number" required min="2" max="${Math.log2(Number.MAX_SAFE_INTEGER)}" step="1">
+      <input id="powerOfTwo" name="powerOfTwo" type="number" required min="2" max="${Math.log2(Number.MAX_SAFE_INTEGER)}">
       <button id="optionsSubmitButton" type="submit">Start</button>
     `;
 
@@ -183,8 +183,8 @@ class UI1 {
     this.optionsForm.addEventListener("submit", e => {
       e.preventDefault();
 
-      const size = Number(document.getElementById("gridSize").value);
-      const pow = Number(document.getElementById("powerOfTwo").value);
+      const size = Math.trunc(Number(document.getElementById("gridSize").value));
+      const pow = Math.trunc(Number(document.getElementById("powerOfTwo").value));
 
       this.options = {size, winningCondition: 2 ** pow};
 
