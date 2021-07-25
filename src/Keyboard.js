@@ -65,8 +65,8 @@ class Keyboard {
     return Keyboard._allProblemKeys;
   }
 
-  constructor() {
-    this._prevDef = true;
+  constructor(prevdef) {
+    this._prevDef = prevdef;
     this._pendingHeldKeys = new Set();
     this._pendingReleasedKeys = new Set();
     // held keys could be a map (key: timestamp)

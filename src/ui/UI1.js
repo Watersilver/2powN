@@ -24,9 +24,9 @@ class UI1 {
     this.optionsForm = document.createElement("form");
     this.optionsForm.innerHTML = `
       <label for"gridSize">Choose grid size: </label>
-      <input id="gridSize" name="gridSize" type="number" required>
+      <input id="gridSize" name="gridSize" type="number" required step="1" min="2" max="${Number.MAX_SAFE_INTEGER}">
       <label for"powerOfTwo">Choose winning condition: 2^</label>
-      <input id="powerOfTwo" name="powerOfTwo" type="number" required>
+      <input id="powerOfTwo" name="powerOfTwo" type="number" required step="1" min="1" max="${Math.log2(Number.MAX_SAFE_INTEGER)}">
       <button id="optionsSubmitButton" type="submit">Start</button>
     `;
 
