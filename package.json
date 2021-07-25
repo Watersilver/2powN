@@ -1,0 +1,23 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "repository": "https://github.com/Watersilver/portfolio.git",
+  "author": "ez <cydisalt@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.5"
+  },
+  "dependencies": {
+    "hammerjs": "^2.0.8",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "textfit": "^2.4.0"
+  },
+  "scripts": {
+    "dev": "parcel index.html --out-dir dev",
+    "build": "parcel build index.html --out-dir docs --public-url ./"
+  },
+  "browserslist": [
+    "since 2017-06"
+  ]
+}

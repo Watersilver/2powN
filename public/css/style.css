@@ -1,0 +1,213 @@
+#root {
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+
+  background-color: rgb(119, 101, 22);
+
+  background-color: #1E1E1E;
+
+  --board-color: #1E1E1E;
+  --gap-color: #323233;
+  --num-color: black;
+}
+
+.ui1 {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  grid-template-areas: "center";
+}
+
+.ui1 .menu{
+  grid-area: center;
+  background-color: darkred;
+  z-index: 1;
+
+  width: 100vw;
+  height: 100vh;
+
+  display:none;
+}
+
+.ui1 .menu h1 {
+  text-align: center;
+  align-self: end;
+}
+
+.ui1 .menu form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-self: start;
+}
+
+.ui1 .menu form>* {
+  /* margin: 10px; */
+  margin: 5px 0;
+}
+
+.ui1 .menu form label {
+  justify-self: end;
+  white-space: nowrap;
+  margin-left: 35px;
+}
+
+.ui1 .menu form input {
+  justify-self: start;
+  width: 3em;
+  background-color: #37373D;
+  border: none;
+  color: white;
+}
+
+.ui1 .menu form button {
+  grid-column: 1 / -1;
+  justify-self: center;
+  font-size: 30px;
+  border: none;
+  border-radius: 2px;
+  padding: 0 11px;
+  margin-top: 22px;
+  background-color: #23D18B;
+}
+
+.ui1 .menu.visible {
+  background-color: #1E1E1E55;
+  color: white;
+
+  display:grid;
+}
+
+.ui1 .menu.visible.game-over form, .ui1 .menu.visible.victory form {
+  animation: 1s ease 1s both fade;
+}
+
+.ui1 .menu.visible.game-over, .ui1 .menu.visible.victory {
+  animation: 1s ease both fade-background;
+}
+
+.ui1 .menu.visible.game-over h1 {
+  --color: white;
+  background-color: darkred;
+}
+
+.ui1 .menu.visible.victory h1 {
+  --color: black;
+  background-color: #23D18B;
+}
+
+.ui1 .menu.visible.game-over h1, .ui1 .menu.visible.victory h1 {
+  overflow: hidden;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  justify-self: center;
+  animation: 1s ease both gameend;
+}
+
+@keyframes gameend {
+  0% {
+    color: transparent;
+    width: 0px;
+    height: 5px;
+  }
+  33% {
+    color: transparent;
+    width: 100vw;
+    height: 5px;
+  }
+  66% {
+    color: transparent;
+    width: 100vw;
+    height: 2em;
+  }
+  100% {
+    color: var(--color);
+    width: 100vw;
+    height: 2em;
+  }
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-background {
+  0% {
+    background-color: transparent;
+  }
+  100% {
+    background-color: #1E1E1E55;
+  }
+}
+
+.ui1 .board {
+  width: 100vmin;
+  height: 100vmin;
+  display: grid;
+  background-color: var(--board-color);
+  /* padding: 1.7vmin; */
+  box-sizing: border-box;
+  position: relative;
+
+  grid-area: center;
+
+  font-family: 'Lora', serif;
+}
+
+.ui1 .board>div {
+  /* margin: 15px; Determined in javascript */
+  background-color: var(--gap-color);
+
+  overflow: visible;
+}
+
+.ui1 .board>div, .number {
+  border-radius: 4px;
+}
+
+.ui1 .number {
+  position: absolute;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  color: var(--num-color);
+
+  user-select: none;
+}
+
+.ui1 .number.appear {
+  animation: 0.1s ease 0.1s both appear;
+}
+
+.ui1 .number.merge {
+  animation: 0.1s ease both merge;
+}
+
+@keyframes appear {
+  from {
+    transform: perspective(500px) translateZ(-100px);
+    opacity: 0;
+  }
+  to {
+    transform: perspective(500px) translateZ(0);
+    opacity: 1;
+  }
+}
+
+@keyframes merge {
+  from {
+    transform: perspective(500px) translateZ(50px);
+  }
+  to {
+    transform: perspective(500px) translateZ(0);
+  }
+}
