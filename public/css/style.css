@@ -47,20 +47,51 @@
 .ui1 .menu form>* {
   /* margin: 10px; */
   margin: 5px 0;
+  font-size: 30px;
+  margin-left: 35px;
 }
 
 .ui1 .menu form label {
   justify-self: end;
+  align-self: center;
   white-space: nowrap;
-  margin-left: 35px;
+}
+
+.ui1 .menu form>.option {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: end;
+  width: 5ch;
 }
 
 .ui1 .menu form input {
-  justify-self: start;
-  width: 3em;
+  min-width: 0;
   background-color: #37373D;
   border: none;
   color: white;
+  -moz-appearance: textfield;
+}
+.ui1 .menu form input::-webkit-outer-spin-button,
+.ui1 .menu form input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+@media (max-width: 500px) {
+  .ui1 .menu form {
+    grid-template-columns: 1fr;
+  }
+  .ui1 .menu form>* {
+    margin-left: 0;
+  }
+  .ui1 .menu form label {
+    justify-self: center;
+    white-space: normal;
+    font-size: 20px;
+  }
+  .ui1 .menu form>.option {
+    justify-self: center;
+  }
 }
 
 .ui1 .menu form button {

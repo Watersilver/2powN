@@ -22,11 +22,19 @@ class UI1 {
     this.pauseTitle.innerHTML = "2 ^ n, n&#8712;&#8469;";
 
     this.optionsForm = document.createElement("form");
+    // this.optionsForm.innerHTML = `
+    //   <label for"gridSize">Choose grid size: </label>
+    //   <input id="gridSize" name="gridSize" type="number" required step="1" min="2" max="100">
+    //   <label for"powerOfTwo">Choose winning condition: 2^</label>
+    //   <input id="powerOfTwo" name="powerOfTwo" type="number" required step="1" min="1" max="${Math.log2(Number.MAX_SAFE_INTEGER)}">
+    //   <button id="optionsSubmitButton" type="submit">Start</button>
+    // `;
+    // oninput="this.style.width = (this.value.length || 1) + 'ch';"
     this.optionsForm.innerHTML = `
       <label for"gridSize">Choose grid size: </label>
-      <input id="gridSize" name="gridSize" type="number" required step="1" min="2" max="${Number.MAX_SAFE_INTEGER}">
-      <label for"powerOfTwo">Choose winning condition: 2^</label>
-      <input id="powerOfTwo" name="powerOfTwo" type="number" required step="1" min="1" max="${Math.log2(Number.MAX_SAFE_INTEGER)}">
+      <div class="option"><input id="gridSize" name="gridSize" type="number" required step="1" min="2" max="100"></div>
+      <label for"powerOfTwo">Choose winning condition:</label>
+      <div class="option">2^<input id="powerOfTwo" name="powerOfTwo" type="number" required step="1" min="1" max="${Math.log2(Number.MAX_SAFE_INTEGER)}"></div>
       <button id="optionsSubmitButton" type="submit">Start</button>
     `;
 
@@ -187,6 +195,7 @@ class UI1 {
       const pow = Math.trunc(Number(document.getElementById("powerOfTwo").value));
 
       if (size < 2) return;
+      if (size > 100) return;
       if (pow < 1) return;
       if (pow > Math.log2(Number.MAX_SAFE_INTEGER)) return;
 
