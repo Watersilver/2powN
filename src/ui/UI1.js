@@ -22,14 +22,6 @@ class UI1 {
     this.pauseTitle.innerHTML = "2 ^ n, n&#8712;&#8469;";
 
     this.optionsForm = document.createElement("form");
-    // this.optionsForm.innerHTML = `
-    //   <label for"gridSize">Choose grid size: </label>
-    //   <input id="gridSize" name="gridSize" type="number" required step="1" min="2" max="100">
-    //   <label for"powerOfTwo">Choose winning condition: 2^</label>
-    //   <input id="powerOfTwo" name="powerOfTwo" type="number" required step="1" min="1" max="${Math.log2(Number.MAX_SAFE_INTEGER)}">
-    //   <button id="optionsSubmitButton" type="submit">Start</button>
-    // `;
-    // oninput="this.style.width = (this.value.length || 1) + 'ch';"
     this.optionsForm.innerHTML = `
       <label for"gridSize">Choose grid size: </label>
       <div class="option"><input id="gridSize" name="gridSize" type="number" required step="1" min="2" max="100"></div>
@@ -263,7 +255,6 @@ class UI1 {
 
   // Runs during init step
   init(game) {
-    // game.loop.next(this.options || {size: 4, winningCondition: 2048});
     if (this.options) {
       game.loop.next(this.options);
     }
